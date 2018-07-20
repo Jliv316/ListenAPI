@@ -78,6 +78,7 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# eb create -d -db.engine postgres -db.size 5 --envvars SECRET_KEY_BASE=0da8b8e189b536bcd87418df59c0828f500a5de1cc5dca5e0066ec4a7502b0d26e92d9ce8877da1b91511a987a0bfb35ae309b87a0aab7db5e19edf17947a037
 production:
   <<: *default
   adapter: postgresql

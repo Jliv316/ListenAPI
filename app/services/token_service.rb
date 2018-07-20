@@ -9,8 +9,6 @@ class TokenService
   def refresh_token_if_expired
     if token_expired?
       url = "https://accounts.spotify.com/api/token"
-      encoded_id = Base64.encode64(ENV['SPOTIFY_CLIENT_ID'])
-      encoded_secret = Base64.encode64(ENV['SPOTIFY_CLIENT_SECRET'])
 
       payload = {
         grant_type: "refresh_token", 
