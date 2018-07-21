@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :safe_uri
 
   def current_user
-    @current_user ||= User.find(session[:id]) if session[:id]
+    @current_user ||= User.find_by(id: session[:id]) if session[:id]
   end
 
   def safe_uri(uri)
