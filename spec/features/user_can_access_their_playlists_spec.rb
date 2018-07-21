@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+# not going to work
 describe 'user logs in' do
   it 'displays users playlists' do
     auth = 
