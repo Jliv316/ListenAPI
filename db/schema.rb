@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_20_065537) do
+ActiveRecord::Schema.define(version: 2018_07_21_223120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "albums", force: :cascade do |t|
+    t.string "name"
+    t.string "spotify_id"
+  end
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.string "spotify_id"
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.string "name"
+    t.string "spotify_id"
+    t.integer "popularity"
+    t.date "release_date"
+    t.bigint "artist_id"
+    t.bigint "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_tracks_on_album_id"
+    t.index ["artist_id"], name: "index_tracks_on_artist_id"
+  end
+
+  create_table "user_tracks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "track_id"
+    t.datetime "added_at"
+    t.index ["track_id"], name: "index_user_tracks_on_track_id"
+    t.index ["user_id"], name: "index_user_tracks_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider"
@@ -27,4 +58,8 @@ ActiveRecord::Schema.define(version: 2018_07_20_065537) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "tracks", "albums"
+  add_foreign_key "tracks", "artists"
+  add_foreign_key "user_tracks", "tracks"
+  add_foreign_key "user_tracks", "users"
 end
