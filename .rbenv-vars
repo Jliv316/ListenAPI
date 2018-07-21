@@ -1,0 +1,5 @@
+RDS_DB_NAME=spin-db-1
+RDS_USERNAME=jclivingston316
+RDS_PASSWORD=Laxin316
+RDS_HOSTNAME=spin-db-1.crgjjyp7zofu.us-west-2.rds.amazonaws.com
+RDS_PORT=5432
