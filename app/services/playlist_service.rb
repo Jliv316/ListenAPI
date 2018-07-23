@@ -9,9 +9,11 @@ class PlaylistService
   end
 
   def playlists
-    data.map do |playlist_info|
-      Playlist.new(playlist_info, @user)
+    user_playlists = data.map do |info|
+      playlist = @user.playlists.create(name: info[:name], user_id: @user.id, spotify_id: info[:id], tracks_url: info[:tracks][:href])
+      TrackService.new(@user, info[:tracks][:href], playlist.id).tracks
     end
+    return user_playlists
   end
 
   private

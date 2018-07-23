@@ -22,10 +22,9 @@ describe 'user logs in' do
       playlist_service = PlaylistService.new(user)
       user_playlists = playlist_service.playlists
 
-      expect(user.playlists.first.name).to eq("July 2018")
-      expect(user.playlists[0].spotify_id).to eq("1JrqK3hJAZYKC53UuKYv23")
-      expect(user.playlists[0].user_id).to eq(50)
-      expect(user.playlists[0].tracks_url).to eq("https://api.spotify.com/v1/users/1263322089/playlists/2K1FTvb8GR3QDWN4dTSkrf/tracks")
+      expect(user.tracks.first.name).to eq("I've Got a Hole Where My Heart Should Be")
+      expect(user.tracks.first.spotify_id).to eq("74fYlRgZGeoXHhs0sJGuPv")
+      expect(user.tracks.first.popularity).to eq(36)
     end
   end
 end

@@ -14,6 +14,7 @@ gem 'figaro'
 gem 'faraday'
 gem 'json', '>= 2.0.0'
 gem 'omniauth-spotify-oauth2', '~> 1.0'
+gem 'react-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

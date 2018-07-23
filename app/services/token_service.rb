@@ -21,7 +21,7 @@ class TokenService
       json = JSON.parse(response.body)
 
       user.token = json["access_token"]
-      user.token_exp = json["expires_in"]
+      user.token_exp = json["expires_at"]
 
       user.save
       return user
