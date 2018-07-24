@@ -8,13 +8,12 @@ class User < ApplicationRecord
   def self.update_or_create(auth)
     user = User.find_by(spotify_id: auth[:spotify_id]) || User.new
     user.attributes = {
-      provider: auth[:provider],
-      spotify_id: auth[:uid],
-      email: auth[:info][:email],
-      name: auth[:info][:name],
-      token: auth[:credentials][:token],
-      refresh_token: auth[:credentials][:refresh_token],
-      token_exp: Time.at(auth["credentials"]["expires_at"])
+      spotify_id: auth["id"],
+      email: auth["email"],
+      name: auth["display_name"],
+      token: auth["access_token"],
+      refresh_token: auth["refresh_token"],
+      token_exp: Time.at(auth["expires_in"])
     }
     user.save!
     user

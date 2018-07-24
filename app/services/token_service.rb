@@ -2,8 +2,24 @@ require 'base64'
 
 class TokenService
   attr_reader :user
-  def initialize(user)
+  def initialize(user = nil)
     @user = user
+  end
+
+  def get_access_token(code)
+    url = "https://accounts.spotify.com/api/token"
+
+    payload = {
+        grant_type: "authorization_code", 
+        redirect_uri: "http://localhost:3166/auth/spotify/callback",
+        code: code,
+        client_id: ENV['SPOTIFY_CLIENT_ID'],
+        client_secret: ENV['SPOTIFY_CLIENT_SECRET']
+      }
+
+      response = Faraday.post(url, payload)
+
+      json = JSON.parse(response.body)
   end
 
   def refresh_token_if_expired

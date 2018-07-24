@@ -14,7 +14,8 @@ gem 'figaro'
 gem 'faraday'
 gem 'json', '>= 2.0.0'
 gem 'omniauth-spotify-oauth2', '~> 1.0'
-gem 'react-rails'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'jwt', '~> 1.5'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -24,6 +25,7 @@ group :development, :test do
   gem 'vcr', '2.2.5'
   gem 'launchy'
   gem 'shoulda-matchers'
+  gem 'dotenv-rails'
 end
 
 group :test do
