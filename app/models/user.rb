@@ -7,7 +7,6 @@ class User < ApplicationRecord
 
   def self.update_or_create(auth)
     client_token = ClientToken.encode(auth["id"])
-    binding.pry
     user = User.find_by(client_token: client_token) || User.new
     user.attributes = {
       spotify_id: auth["id"],
