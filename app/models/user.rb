@@ -6,14 +6,18 @@ class User < ApplicationRecord
   after_create :create_playlists, on: [:create, :update]
 
   def self.update_or_create(auth)
-    user = User.find_by(spotify_id: auth[:spotify_id]) || User.new
+    client_token = ClientToken.encode(auth["id"])
+    binding.pry
+    user = User.find_by(client_token: client_token) || User.new
     user.attributes = {
       spotify_id: auth["id"],
       email: auth["email"],
       name: auth["display_name"],
       token: auth["access_token"],
       refresh_token: auth["refresh_token"],
-      token_exp: Time.at(auth["expires_in"])
+      client_token: client_token,
+      token_exp: Time.at(auth["expires_in"]),
+      profile_picture: auth["images"][0]["url"]
     }
     user.save!
     user

@@ -5,12 +5,11 @@ class SessionsController < ApplicationController
     user = User.update_or_create(user_info)
     session[:id] = user.id
     current_user
-    binding.pry
-    redirect_to root
+    redirect_to "http://localhost:3000?token=#{user.client_token}"
   end
 
   def destroy
     session.clear
-    redirect_to root_path
+    redirect_to "http://localhost:3000?token=#{user.client_token}"
   end
 end

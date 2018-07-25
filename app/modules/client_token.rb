@@ -1,9 +1,8 @@
-module TokiToki
+module ClientToken
   def self.encode(sub)
     payload = {
-      iss: ENV['SPIN_CLIENT_URL'],
+      iss: 'http://localhost:3000',
       sub: sub,
-      exp: 4.hours.from_now.to_i,
       iat: Time.now.to_i
     }
     JWT.encode payload, ENV['JWT_SECRET'], 'HS256'
@@ -11,7 +10,7 @@ module TokiToki
 
   def self.decode(token)
     options = {
-      iss: ENV['FLASHCARDS_CLIENT_URL'],
+      iss: 'http://localhost:3000',
       verify_iss: true,
       verify_iat: true,
       leeway: 30,

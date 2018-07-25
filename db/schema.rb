@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_22_010124) do
+ActiveRecord::Schema.define(version: 2018_07_25_000002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2018_07_22_010124) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "provider"
     t.string "spotify_id"
     t.string "name"
     t.string "email"
@@ -66,6 +65,8 @@ ActiveRecord::Schema.define(version: 2018_07_22_010124) do
     t.datetime "token_exp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "client_token"
+    t.string "profile_picture"
   end
 
   add_foreign_key "tracks", "albums"
