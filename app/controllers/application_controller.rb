@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   # end
 
   def current_user
-    @current_user ||= User.find_by(id: session[:id]) if session[:id]
+    @current_user ||= User.find_by(client_token: params[:client_token])
   end
   
   def logged_in?

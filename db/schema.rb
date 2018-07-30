@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_000002) do
+ActiveRecord::Schema.define(version: 2018_07_30_005217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_000002) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "playlist_id"
+    t.boolean "top_track", default: false
     t.index ["album_id"], name: "index_tracks_on_album_id"
     t.index ["artist_id"], name: "index_tracks_on_artist_id"
     t.index ["playlist_id"], name: "index_tracks_on_playlist_id"
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_000002) do
     t.datetime "updated_at", null: false
     t.string "client_token"
     t.string "profile_picture"
+    t.json "location_data", default: {}
   end
 
   add_foreign_key "tracks", "albums"

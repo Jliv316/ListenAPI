@@ -8,8 +8,9 @@ class TrackService
 
   def tracks
     data.map do |info|
-      artist = Artist.create(name: info[:track][:album][:name], spotify_id: info[:track][:album][:id])
-      album = Album.create(name: info[:track][:album][:artists][0][:name], spotify_id: info[:track][:album][:artists][0][:id])
+      artist = Artist.create(name: "none", spotify_id: "none") if info[:track][:album][:artists] == ([] || nil)
+      artist = Artist.create(name: info[:track][:album][:artists][0][:name], spotify_id: info[:track][:album][:artists][0][:id]) if info[:track][:album][:artists] != ([] || nil)
+      album = Album.create(name: info[:track][:album][:name], spotify_id: info[:track][:album][:id])
       track = Track.create(name: info[:track][:name], spotify_id: info[:track][:id], popularity: info[:track][:popularity], artist_id: artist.id, album_id: album.id, release_date: info[:track][:album][:release_date], playlist_id: playlist_id)
       UserTrack.create(user_id: user.id, track_id: track.id, added_at: info[:added_at])
     end

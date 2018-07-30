@@ -47,6 +47,7 @@ class TokenService
   end
 
   def token_expired?
+    user.token_exp = 10.minutes.ago if user.token == nil
     if user.token_exp < Time.now
       return true
     else
