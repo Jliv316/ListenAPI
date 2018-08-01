@@ -5,7 +5,7 @@ module ClientToken
       sub: sub,
       iat: Time.now.to_i
     }
-    JWT.encode payload, ENV['JWT_SECRET'], 'HS256'
+    JWT.encode payload, 'ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ', 'HS256'
   end
 
   def self.decode(token)
@@ -16,6 +16,6 @@ module ClientToken
       leeway: 30,
       algorithm: 'HS256'
     }
-    JWT.decode token, ENV['JWT_SECRET'], true, options
+    JWT.decode token, 'ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ', true, options
   end
 end
