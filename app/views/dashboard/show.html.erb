@@ -1,9 +1,0 @@
-<h3> Playlists: </h3>
-<% @playlists.each do |playlist| %>
-  <ul>
-    <h1><%= playlist.name %></h1>
-    <% playlist.tracks.each do |track| %>
-      <li><%= track.name %></li>
-    <%end%>
-  </ul>
-<%end%>
