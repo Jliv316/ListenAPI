@@ -9,8 +9,11 @@ module Api::V1
             track[0]
           end
         end
-      @top_tracks = @top_tracks.flatten
-      render json: @top_tracks
+      @top_tracks = @top_tracks.flatten.uniq
+      top_tracks = User.get_tracks(@top_tracks)
+      playlist = CreatePlaylistService.new(current_user).create_playlist
+      AddTracksService.new(current_user, playlist, top_tracks).format_tracks
+      render json: playlist
     end
   end
 end

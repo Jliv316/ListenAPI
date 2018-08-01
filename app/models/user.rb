@@ -32,17 +32,24 @@ class User < ApplicationRecord
 
   def start_party(location)
     users = User.all
-    # partiers = users.find_all do |user|
-    #     user.location_data = location if user.location_data == {}
-    #     lat = user.location_data["lat"]
-    #     lng = user.location_data["lng"]
-    #     (location["lat"] - lat).round(3) == 0.0
-    # end
-    return users
+    partiers = []
+      users.each do |user|
+        user.location_data = location if user.location_data == {}
+        lat = user.location_data["lat"]
+        lng = user.location_data["lng"]
+        partiers << user if (location["lat"] - lat).round(2) == 0.0
+    end
+    return partiers
   end
 
   def top_tracks
     tracks.group(:name).order('count_all desc').count.first(10)
+  end
+
+  def self.get_tracks(songs)
+    songs.map do |track|
+      Track.find_by(name: track)
+    end
   end
 
   def mark_top_tracks

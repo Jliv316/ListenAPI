@@ -16,6 +16,7 @@ gem 'json', '>= 2.0.0'
 gem 'omniauth-spotify-oauth2', '~> 1.0'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'jwt', '~> 1.5'
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -26,6 +27,7 @@ group :development, :test do
   gem 'launchy'
   gem 'shoulda-matchers'
   gem 'dotenv-rails'
+  gem 'simplecov'
 end
 
 group :test do
