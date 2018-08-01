@@ -23,7 +23,7 @@ module Spin
     config.load_defaults 5.2
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'https://evening-river-55715.herokuapp.com/'
+        origins 'https://mighty-inlet-30984.herokuapp.com'
         resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
       end
     end

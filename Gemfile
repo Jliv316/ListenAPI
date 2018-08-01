@@ -17,6 +17,7 @@ gem 'omniauth-spotify-oauth2', '~> 1.0'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'jwt', '~> 1.5'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'pry'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

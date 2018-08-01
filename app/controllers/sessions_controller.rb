@@ -5,11 +5,11 @@ class SessionsController < ApplicationController
     user = User.update_or_create(user_info)
     session[:id] = user.id
     current_user
-    redirect_to "https://mighty-inlet-30984.herokuapp.com/Dashboard?token=#{user.client_token}"
+    redirect_to "http://localhost:3000/Dashboard?token=#{user.client_token}"
   end
 
   def destroy
     session.clear
-    redirect_to "https://mighty-inlet-30984.herokuapp.com/"
+    redirect_to "http://localhost:3000/"
   end
 end
