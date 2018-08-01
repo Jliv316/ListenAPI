@@ -1,7 +1,7 @@
 module ClientToken
   def self.encode(sub)
     payload = {
-      iss: 'http://localhost:3000',
+      iss: 'https://mighty-inlet-30984.herokuapp.com/',
       sub: sub,
       iat: Time.now.to_i
     }
@@ -10,7 +10,7 @@ module ClientToken
 
   def self.decode(token)
     options = {
-      iss: 'http://localhost:3000',
+      iss: 'https://mighty-inlet-30984.herokuapp.com/',
       verify_iss: true,
       verify_iat: true,
       leeway: 30,
