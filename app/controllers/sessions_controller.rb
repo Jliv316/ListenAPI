@@ -9,7 +9,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    binding.pry
     session.clear
-    redirect_to "http://localhost:3000/"
+    binding.pry
+    redirect_to "http://localhost:3000/Products"
   end
 end

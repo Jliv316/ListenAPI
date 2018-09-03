@@ -13,8 +13,8 @@ class TokenService
         grant_type: "authorization_code", 
         redirect_uri: "http://localhost:3166/auth/spotify/callback",
         code: code,
-        client_id: 'd759774253a14825af09f813f6982145',
-        client_secret: 'f182ee7344664fba8c5d1dfae96648f4'
+        client_id: ENV['SPOTIFY_CLIENT_ID'],
+        client_secret: ENV['SPOTIFY_CLIENT_SECRET']
       }
 
       response = Faraday.post(url, payload)

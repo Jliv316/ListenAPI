@@ -1,0 +1,8 @@
+<% if !current_user.nil? %>
+  <h3>Welcome <%= "#{current_user.name}" %></h3>
+  <%= link_to "Playlists", "/dashboard"%>
+  <%= link_to "Logout", logout_path%>
+  <%= link_to "Music Player", "/player"%>
+<%else%>
+  <%= link_to "Sign in with Spotify", "/auth/spotify?show_dialog=true" %>
+<%end%>
